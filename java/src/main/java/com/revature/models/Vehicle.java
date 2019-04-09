@@ -21,6 +21,7 @@ public class Vehicle {
 	private int coverageType;
 	@Column(name="primary_driver")
 	private int primaryDriver;
+	private String vin;
 	
 	public Vehicle() {
 		// TODO Auto-generated constructor stub

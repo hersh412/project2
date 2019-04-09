@@ -19,8 +19,6 @@ public class Customer {
 	private int id;
 	private Date dob;
 	private String occupation;
-	@OneToOne
-	@JoinColumn(name="id")
 	private int state;
 	@Column(name="dl_issue_date")
 	private Date dlIssueDate;

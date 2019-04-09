@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,67 +14,54 @@ public class Demerit {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int customerid;
+	@ManyToOne
+	@JoinColumn(name="customerid")
+	private Customer customer;
 	private int type;
 	private String vin;
 	private String explaniation;
 	
-	public Demerit() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public int getCustomerid() {
-		return customerid;
+	public Customer getCustomer() {
+		return customer;
 	}
-
-	public void setCustomerid(int customerid) {
-		this.customerid = customerid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-
 	public int getType() {
 		return type;
 	}
-
 	public void setType(int type) {
 		this.type = type;
 	}
-
 	public String getVin() {
 		return vin;
 	}
-
 	public void setVin(String vin) {
 		this.vin = vin;
 	}
-
 	public String getExplaniation() {
 		return explaniation;
 	}
-
 	public void setExplaniation(String explaniation) {
 		this.explaniation = explaniation;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + customerid;
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + ((explaniation == null) ? 0 : explaniation.hashCode());
 		result = prime * result + id;
 		result = prime * result + type;
 		result = prime * result + ((vin == null) ? 0 : vin.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,7 +71,10 @@ public class Demerit {
 		if (getClass() != obj.getClass())
 			return false;
 		Demerit other = (Demerit) obj;
-		if (customerid != other.customerid)
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
 			return false;
 		if (explaniation == null) {
 			if (other.explaniation != null)
@@ -100,13 +92,15 @@ public class Demerit {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
-		return "Demerit [id=" + id + ", customerid=" + customerid + ", type=" + type + ", vin=" + vin
-				+ ", explaniation=" + explaniation + "]";
+		return "Demerit [id=" + id + ", customer=" + customer + ", type=" + type + ", vin=" + vin + ", explaniation="
+				+ explaniation + "]";
 	}
-	
+	public Demerit() {
+		// TODO Auto-generated constructor stub
+	}
+
 	
 
 }
