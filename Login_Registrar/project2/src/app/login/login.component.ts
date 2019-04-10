@@ -5,17 +5,15 @@ import { first } from 'rxjs/operators';
 export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   loading = false;
-  sumitted=false;
+  submitted = false;
   returnUrl: string;
-  
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required]
-    });
 
+  ngOnInit() {
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-}
+  }
+  onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+  }
 }
 
