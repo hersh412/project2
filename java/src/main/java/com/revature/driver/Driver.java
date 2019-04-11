@@ -25,7 +25,7 @@ public class Driver {
 		
 		System.out.println("test");
 		us.addUser(a);
-		
+		//
 		
 //		User b = us.getUserByEmail("test@aol.com");
 		List<User> lu = new ArrayList<User>(us.getAllUsers());
