@@ -101,4 +101,5 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
   </dependencies>
+  <packaging>war</packaging>
 </project>
