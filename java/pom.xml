@@ -3,6 +3,7 @@
   <groupId>com.revature</groupId>
   <artifactId>project2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
   <dependencyManagement>
 		<dependencies>
 			<!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
@@ -113,5 +114,5 @@
     </dependency>
 			
   </dependencies>
-  <packaging>war</packaging>
+  
 </project>
