@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,7 +25,7 @@ public class Vehicle {
 	private String model;
 	@Column(name="coverage_type")
 	private int coverageType;
-	@Column(name="primary_driver")
+//	@Column(name="primary_driver")
 	@OneToOne
 	@JoinColumn(name="primary_driver")
 	private Customer primaryDriver;
