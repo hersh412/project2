@@ -24,6 +24,8 @@ hs_err_pid*
 
 # Target Folder #
 java/target
+<<<<<<< HEAD
+=======
 
 # Outputs
 bazel-*
@@ -50,3 +52,4 @@ yarn-error.log*
 # Mac OSX Finder files.
 **/.DS_Store
 .DS_Store
+>>>>>>> dev
