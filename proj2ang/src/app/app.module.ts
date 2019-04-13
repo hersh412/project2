@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgModule
   ],
   providers: [],
   bootstrap: [AppComponent]
