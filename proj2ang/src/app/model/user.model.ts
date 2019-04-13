@@ -9,6 +9,7 @@ export class Users {
     city: string;
     state: string;
     isMale: boolean;
+    token: string;
 
     constructor(id: number, password: string, userconf: number, fName: string,
                 lName: string, address1: string, address2: string, city: string, state: string, isMale: boolean) {

@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
  providedIn: 'root'
 })
 export class UsersService {
- url = '/users';
- loginUrl = '/logins';
+ url = '/WEB-INF/pages/users';
+ loginUrl = '/user';
 
  constructor(private http: HttpClient) { }
 

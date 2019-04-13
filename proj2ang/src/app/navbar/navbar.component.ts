@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Users } from '../model/user.model';
 import { UsersService } from '../../services/user.service';
 
@@ -16,6 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private usersService: UsersService) { }
 
+ 
+
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -23,16 +25,22 @@ export class NavbarComponent implements OnInit {
    });
   }
 
-  checkLogin() {
+  onSubmit() {
+    this.submitted = true;
     let email = this.loginForm.get('email').value;
     let password = this.loginForm.get('password').value;
-    var id = null;
-    // console.log(email);
-    // console.log(password);
+    console.log(email);
+    console.log(password);
 
+    if (this.loginForm.invalid){
+      return;
+    }
+
+    /*
     let promise = new Promise<Users>((resolve) => {
       resolve(this.usersService.getUser(email, password));
     });
+    */
 
   }
 }
