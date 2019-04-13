@@ -8,13 +8,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { QuoteComponent } from './quote/quote.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     QuoteComponent,
-    HomePageComponent
+    HomePageComponent,
+    QuoteFormComponent
   ],
   imports: [
     BrowserModule,
