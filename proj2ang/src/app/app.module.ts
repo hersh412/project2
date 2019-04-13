@@ -5,16 +5,29 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { QuoteComponent } from './quote/quote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: AppComponent
+      },
+      {
+        path: 'quote',
+        component: QuoteComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
