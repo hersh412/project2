@@ -23,7 +23,7 @@
 hs_err_pid*
 
 # Target Folder #
-java/target
+proj2java/target
 
 # Outputs
 bazel-*
