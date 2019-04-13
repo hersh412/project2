@@ -39,6 +39,7 @@
           <input type="text" formControlName="year" class="form-control form-control-sm"/>
           <div *ngIf="quoteForm.controls['year'].touched && quoteForm.controls['year'].invalid" class="alert alert-danger mt-1">
               <div *ngIf="quoteForm.controls['year'].errors.required">Year is required</div> 
+              <div *ngIf="quoteForm.controls['year'].errors?.pattern">Invalid year</div> 
             </div>
       </div>
     </div>
@@ -75,4 +76,9 @@
      
       <button class="btn btn-primary" type="submit" [disabled]="!quoteForm.valid" required>Get Quote</button>
       </form>
+    </div>
+    <div class="disclaimer">
+         * Rate quotes generated are estimates based on the information you provided, considering currently applicable laws, rates and factors, all of which are subject to change without notice.
+         A rate quote does not constitute a contract, binder or agreement to extend insurance coverage. Your actual rate may vary.
+         To obtain a final rate, please submit the full application for issuance of an insurance commitment through your normal submission channel. 
     </div>

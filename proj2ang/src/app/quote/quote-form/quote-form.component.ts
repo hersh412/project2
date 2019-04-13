@@ -15,7 +15,7 @@ export class QuoteFormComponent {
   quoteForm = this.fb.group({
         zipcode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), ZipcodeValidators.outOfServiceArea]],
         class: ['', Validators.required],
-        year: ['', Validators.required],
+        year: ['', [Validators.required, Validators.pattern('^(19|[2-9][0-9])\\d{2}$') ]], //Validators.pattern('^(19|[2-9][0-9])\d{2}$')
         gender: ['', Validators.required],
         age: ['', Validators.required]
       });
@@ -24,6 +24,5 @@ export class QuoteFormComponent {
         const quote = this.quoteForm.value;
         const URL = 'http://localhost:8080/project2/quote/generate';
         this.http.post(URL,quote).subscribe(response => console.log(response));
-       // console.warn(this.quoteForm.value);
       }
 }
