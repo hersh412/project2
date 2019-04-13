@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { QuoteComponent } from './quote/quote.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    QuoteComponent
+    QuoteComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { QuoteComponent } from './quote/quote.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: AppComponent
+        component: HomePageComponent
       },
       {
         path: 'quote',
