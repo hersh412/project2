@@ -1,16 +1,24 @@
 package com.revature.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "quote")
 public class Quote {
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 	private String zipcode;
-	private String vehicleClass;
-	private String year;
-	private String gender;
+    @Transient
+    private String vehicleClass;
+    @Transient
+    private String year;
+    @Transient
+    private String gender;
+    @Transient
 	private String age;
-	public long getId() {
+
+    public long getId() {
 		return id;
 	}
 	public void setId(long id) {
@@ -46,7 +54,8 @@ public class Quote {
 	public void setAge(String age) {
 		this.age = age;
 	}
-	@Override
+
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
