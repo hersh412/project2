@@ -22,7 +22,7 @@ public class QuoteController {
 	
 	@PostMapping(value="/quote/generate", consumes="application/json")
 	public ResponseEntity generateQuote(@RequestBody Quote quote, HttpSession sess)  {
-        quoteservice.addQuote(quote);
+        //quoteservice.addQuote(quote);
 		System.out.println("*********");
 		System.out.println(quote);
 		return new ResponseEntity("{\"price\" : \"$1500\"}", HttpStatus.OK);
