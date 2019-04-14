@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { QuoteComponent } from './quote/quote.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
     NavbarComponent,
     QuoteComponent,
     HomePageComponent,
-    QuoteFormComponent
+    QuoteFormComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,10 @@ import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
       {
         path: 'quote',
         component: QuoteComponent
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
       }
     ])
   ],
