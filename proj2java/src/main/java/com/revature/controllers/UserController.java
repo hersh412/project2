@@ -17,17 +17,17 @@ public class UserController {
 	
 	private AuthService authService;
 
-	@GetMapping()
+	@GetMapping(value="/user")
 	public List<User> getAllUsers(){
 		return userService.getAllUsers();
 	}
 	
-	@GetMapping("/user/{email}")
+	@GetMapping(value="/user/{email}")
 	public User getUserByEmail(@PathVariable String email) {
 		return userService.getUserByEmail(email);
 	}
 	
-	@PostMapping(consumes = "application/json")
+	@PostMapping(value="user/", consumes = "application/json")
 	public void makeUser(@RequestBody User user) {
 		userService.addUser(user);
 	}
