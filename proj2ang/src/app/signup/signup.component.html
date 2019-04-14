@@ -3,10 +3,42 @@
     <div class="col-md-6 bg-light p-4 rounded">
       <h5 class="text-center text-light bg-success mb-2 p-2 rounded lead" id="result">Hi</h5>
       <div class="progress-bar bg-danger rounded" role="progressbar" style="width:20%" id="progressBar">
-        <div class="lead" id="progressText">Step - 1</div>
+        <div class="lead" id="progressText"><b>Step 1 </b></div>
       </div>
-      <form [formGroup]="hi">
-        
+      <p></p>
+      <form [formGroup]="signupForm">
+        <div id="first">
+          <h4 class="text-center bg-primary p-1 rounded text-light">
+            Personal Information
+          </h4>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              class="form-control form-control-md"
+              formControlName="email"
+              id="email"
+              placeholder="email address"
+              type="text">
+          </div>
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input
+              class="form-control form-control-md"
+              formControlName="firstname"
+              id="firstname"
+              placeholder="First Name"
+              type="text">
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input
+              class="form-control form-control-md"
+              formControlName="lastname"
+              id="lastname"
+              placeholder="Last Name"
+              type="text">
+          </div>
+        </div>
       </form>
       </div>
   </div>
