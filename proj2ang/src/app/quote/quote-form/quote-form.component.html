@@ -21,7 +21,7 @@
       <div class="form-row mt-3">
         <div class="col-md-4">
         <label>Class</label>
-          <select class="form-control form-control-sm" formControlName="class">
+          <select class="form-control form-control-sm" formControlName='vehicleClass'>
               <option>Sedan</option>
               <option>SUV</option>
               <option>Minivan</option>
@@ -29,8 +29,8 @@
               <option>Luxury Vehicle</option>
               <option>Sports Car</option>
             </select>
-            <div *ngIf="quoteForm.controls['class'].touched && quoteForm.controls['class'].invalid" class="alert alert-danger mt-1">
-              <div *ngIf="quoteForm.controls['class'].errors.required">Class is required</div> 
+            <div *ngIf="quoteForm.controls['vehicleClass'].touched && quoteForm.controls['vehicleClass'].invalid" class="alert alert-danger mt-1">
+              <div *ngIf="quoteForm.controls['vehicleClass'].errors.required">Class is required</div> 
             </div>
       </div>
       <div class="col-sm-2"></div>

@@ -108,7 +108,7 @@ public class Quote {
         return Objects.hash(id, timestamp, zipcode, vehicleClass, year, gender, age);
     }
 	public Quote() {
-		// TODO Auto-generated constructor stub
+        this.timestamp = new Timestamp(System.currentTimeMillis());
 	}
 	
 	
