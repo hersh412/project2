@@ -27,6 +27,4 @@ public class QuoteController {
 		System.out.println(quote);
 		return new ResponseEntity("{\"price\" : \"$1500\"}", HttpStatus.OK);
 	}
-	
-
 }
