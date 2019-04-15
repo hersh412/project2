@@ -1,3 +1,92 @@
-<p>
-  add-vehicle works!
-</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-11 bg-light p-4 rounded">
+      <p></p>
+      <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit(vehicleForm)">
+          <h4 class="text-center p-1 rounded text-light" style="background-color: #62013c">
+            Vehicles
+          </h4>
+        <div class="form-row">
+          <div class="col-md-2">
+            <button (click)="addVehicle()" class="btn btn-danger btn-sm">Add Vehicle</button>
+          </div>
+        </div>
+        <div class="form-row"></div>
+        <div class="form-row"></div>
+        <div formArrayName="vehicles">
+          <div class="vehicle-container" *ngFor="let vehicle of getVehicles(vehicleForm); let i = index">
+            <div class="ui raised segments" [formGroupName]="i.toString()">
+              <div class="form-row justify-content-center">
+                <h5 class="text-center p-1 rounded text-light" style="background-color: dodgerblue">Vehicle {{ i+1 }} </h5>
+              </div>
+              <div class="form-row">
+                <div class="col-sm-1">
+                  <label for="year">Year</label>
+                </div>
+                <div class="col-sm-2">
+                  <input
+                    class="form-control form-control-sm"
+                    formControlName="year"
+                    id="year"
+                    placeholder="Year"
+                    type="text">
+                </div>
+                <div class="col-sm-1 leftlabel">
+                  <label for="make">Make</label>
+                </div>
+                <div class="col-sm-2">
+                  <input
+                    class="form-control form-control-sm"
+                    formControlName="make"
+                    id="make"
+                    type="text">
+                </div>
+                <div class="col-sm-1 leftlabel">
+                  <label for="model">Model</label>
+                </div>
+                <div class="col-sm-3">
+                  <input
+                    class="form-control form-control-sm"
+                    formControlName="model"
+                    id="model"
+                    type="text">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-sm-1">
+                  <label for="vin">VIN</label>
+                </div>
+                <div class="col-sm-3">
+                  <input
+                    class="form-control form-control-sm"
+                    formControlName="vin"
+                    id="vin"
+                    type="text">
+                </div>
+                <div class="col-sm-2 leftlabel">
+                  <label for="coverageType">Coverage Type</label>
+                </div>
+                <div class="col-sm-3">
+                  <select
+                    class="form-control form-control-sm"
+                    id="coverageType"
+                    formControlName="coverageType">
+                    <option>Full Coverage</option>
+                    <option>Liability</option>
+                    <option>Comprehensive</option>
+                  </select>
+                </div>
+                <div class="col-sm-2" style="margin-left:15px" >
+                  <button (click)="removeVehicle(i)" *ngIf="i>0" class="btn btn-sm btn-dark">Remove Vehicle</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        </div>
+        <button class="btn btn-primary" style="margin-top:10px">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

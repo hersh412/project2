@@ -38,6 +38,10 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
       {
         path: 'signup',
         component: SignupComponent
+      },
+      {
+        path: 'addvehicle',
+        component: AddVehicleComponent
       }
     ])
   ],
