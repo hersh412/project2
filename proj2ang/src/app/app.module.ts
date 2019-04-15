@@ -10,6 +10,7 @@ import { QuoteComponent } from './quote/quote.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignupComponent } from './signup/signup.component';
     QuoteComponent,
     HomePageComponent,
     QuoteFormComponent,
-    SignupComponent
+    SignupComponent,
+    AddVehicleComponent
   ],
   imports: [
     BrowserModule,
