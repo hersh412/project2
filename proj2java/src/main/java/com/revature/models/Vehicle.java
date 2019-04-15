@@ -1,15 +1,6 @@
 package com.revature.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="vehicle")
@@ -24,11 +15,7 @@ public class Vehicle {
 	private int make;
 	private String model;
 	@Column(name="coverage_type")
-	private int coverageType;
-//	@Column(name="primary_driver")
-	@OneToOne
-	@JoinColumn(name="primary_driver")
-	private Customer primaryDriver;
+    private String coverageType;
 	private String vin;
 	
 	public Vehicle() {
@@ -149,10 +136,8 @@ public class Vehicle {
 				return false;
 		} else if (!vin.equals(other.vin))
 			return false;
-		if (year != other.year)
-			return false;
-		return true;
-	}
+        return year == other.year;
+    }
 
 	@Override
 	public String toString() {
