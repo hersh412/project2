@@ -1,5 +1,6 @@
 export class Users {
     id: number;
+    email: string;
     password: string;
     userconf: number;
     fName: string;
@@ -11,9 +12,10 @@ export class Users {
     isMale: boolean;
     token: string;
 
-    constructor(id: number, password: string, userconf: number, fName: string,
+    constructor(id: number, email: string, password: string, userconf: number, fName: string,
                 lName: string, address1: string, address2: string, city: string, state: string, isMale: boolean) {
         this.id = id;
+        this.email = email;
         this.password = password;
         this.userconf = userconf;
         this.fName = fName;
