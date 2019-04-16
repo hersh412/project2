@@ -30,5 +30,12 @@ public class QuoteController {
 	@Autowired
 	public void setQuoteservice(QuoteService quoteservice) {
 		this.quoteservice = quoteservice;
+	}
+
+	public QuoteController() {
+		// TODO Auto-generated constructor stub
 	}	
+	
+	
+
 }

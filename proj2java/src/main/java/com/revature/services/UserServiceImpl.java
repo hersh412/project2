@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public UserServiceImpl() {
+		super();
 	}
 
 	public UserServiceImpl(UserDao userdao) {
