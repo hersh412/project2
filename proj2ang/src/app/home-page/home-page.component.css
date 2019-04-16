@@ -1,0 +1,76 @@
+.navbar-brand {
+  font-family: titillium web, sands-serif;
+  font-size: 1.5rem!important;
+  padding-top: 0!important;
+  margin-right:2rem!important;
+  color:#62013c!important;
+}
+
+.form-control {
+  box-shadow: none;
+  font-weight: normal;
+  font-size: 13px;
+}
+.form-control:focus {
+  border-color: #33cabb;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+.navbar-header.col {
+  padding: 0 !important;
+}
+.navbar {
+  background: #fff;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.get-started-btn {
+  min-width: 75px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: #fff;
+  background: #78A672;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+  border: none;
+}
+
+.navbar .form-inline {
+  display: inline-block;
+}
+.navbar .nav li {
+  position: relative;
+}
+.navbar .nav li a {
+  color: #888;
+}
+
+.navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+  color: #fff;
+  background: #33cabb;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  vertical-align: middle;
+  border: none;
+}
+.navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
+  color: #fff;
+  outline: none;
+  background: #31bfb1;
+}
+.navbar .nav-item i {
+  font-size: 18px;
+}
+.navbar .navbar-form {
+  border: none;
+}
+  .navbar .form-inline {
+    display: block;
+  }
+  .navbar .input-group {
+    width: 100%;
+  }
+  .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
+    display: block;
+  }
