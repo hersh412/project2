@@ -9,12 +9,16 @@ import { routing } from './app.routing';
 
 import { HttperrorInterceptor } from './helper/httperror.interceptor';
 import { AuthTokenInterceptor } from './helper/authtoken.interceptor';
+import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
+import { QuoteComponent } from './quote/quote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AlertComponent
+    AlertComponent,
+    QuoteFormComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,
