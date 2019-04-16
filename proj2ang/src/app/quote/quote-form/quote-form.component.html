@@ -1,3 +1,84 @@
-<p>
-  quote-form works!
-</p>
+<div class="container mt-5">
+    <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" >
+      <div class="form-row">
+        <div class="col-md-4">
+        <label for="zipcode">Zip Code</label>
+            <input 
+            type="text"
+            formControlName="zipcode"
+            id="zipcode"
+            class="form-control form-control-sm">
+            <div *ngIf="((quoteForm.controls['zipcode'].touched) && (quoteForm.controls['zipcode'].invalid))" class="alert alert-danger mt-1">
+              <div *ngIf="quoteForm.controls['zipcode'].errors.required">Zipcode is required.</div>
+              <div *ngIf="quoteForm.controls['zipcode'].errors.minlength || quoteForm.controls['zipcode'].errors.maxlength">Zipcode must be 5 digits</div>
+              <div *ngIf="((!quoteForm.controls['zipcode'].errors.required) && 
+              !(quoteForm.controls['zipcode'].errors.minlength || quoteForm.controls['zipcode'].errors.maxlength) &&
+              (quoteForm.controls['zipcode'].errors.outOfServiceArea))">Zipcode is out of our service area.</div>
+            </div> 
+          </div>
+        </div>
+    
+      <div class="form-row mt-3">
+        <div class="col-md-4">
+        <label>Class</label>
+          <select class="form-control form-control-sm" formControlName='vehicleClass'>
+              <option>Sedan</option>
+              <option>SUV</option>
+              <option>Minivan</option>
+              <option>Pickup</option>
+              <option>Luxury Vehicle</option>
+              <option>Sports Car</option>
+            </select>
+            <div *ngIf="quoteForm.controls['vehicleClass'].touched && quoteForm.controls['vehicleClass'].invalid" class="alert alert-danger mt-1">
+              <div *ngIf="quoteForm.controls['vehicleClass'].errors.required">Class is required</div> 
+            </div>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-md-3">
+          <label>Year</label>
+          <input type="text" formControlName="year" class="form-control form-control-sm"/>
+          <div *ngIf="quoteForm.controls['year'].touched && quoteForm.controls['year'].invalid" class="alert alert-danger mt-1">
+              <div *ngIf="quoteForm.controls['year'].errors.required">Year is required</div> 
+              <div *ngIf="quoteForm.controls['year'].errors?.pattern">Invalid year</div> 
+            </div>
+      </div>
+    </div>
+    
+    <div class="form-group form-row mt-3">
+      <div class="col-md-4">
+        <label>Gender</label>
+        <select class="form-control form-control-sm" formControlName="gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <div *ngIf="quoteForm.controls['gender'].touched && quoteForm.controls['gender'].invalid" class="alert alert-danger mt-1">
+            <div *ngIf="quoteForm.controls['gender'].errors.required">Genderis required</div> 
+          </div>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-md-3">
+        <label>Age</label>
+        <select formControlName="age" class="form-control form-control-sm">
+          <option>Under 18</option>
+          <option>18-21</option>
+          <option>22-25</option>
+          <option>26-30</option>
+          <option>31-35</option>
+          <option>36-45</option>
+          <option>46-55</option>
+          <option>56+</option>
+          </select>
+          <div *ngIf="quoteForm.controls['age'].touched && quoteForm.controls['age'].invalid" class="alert alert-danger mt-1">
+              <div *ngIf="quoteForm.controls['age'].errors.required">Age is required</div> 
+            </div>
+      </div>
+    </div>
+     
+      <button class="btn btn-primary" type="submit" [disabled]="!quoteForm.valid" required>Get Quote</button>
+      </form>
+    </div>
+    <div class="disclaimer">
+         * Rate quotes generated are estimates based on the information you provided, considering currently applicable laws, rates and factors, all of which are subject to change without notice.
+         A rate quote does not constitute a contract, binder or agreement to extend insurance coverage. Your actual rate may vary.
+         To obtain a final rate, please submit the full application for issuance of an insurance commitment through your normal submission channel. 
+    </div>
