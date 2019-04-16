@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 	
-	UserDao userdao;
+	private UserDao userdao;
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 	
 	@Autowired
@@ -27,6 +27,19 @@ public class UserServiceImpl implements UserService {
 		User ret = null;
 		logger.info("getUserBgyEmail_email: " + email);
 		ret = userdao.getUserByEmail(email);
+		return ret;
+	}
+
+	@Override
+	public User authenticate(User u) {
+		User ret = null;
+		logger.info("Attempting login: " + u.getEmail());
+		ret = userdao.getUserByEmail(u.getEmail());
+		logger.info("dao Returned " + ret.toString());
+		if (ret != null && !ret.getPassword().equals(u.getPassword())) {
+			ret = null;
+			logger.info("Invalid login");
+		}
 		return ret;
 	}
 
@@ -62,7 +75,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public UserServiceImpl(UserDao userdao) {
-		super();
 		this.userdao = userdao;
 	}
 

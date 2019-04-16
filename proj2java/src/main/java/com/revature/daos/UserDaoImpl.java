@@ -1,9 +1,7 @@
 package com.revature.daos;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.revature.models.User;
+import com.revature.utils.SessionFactoryUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
@@ -12,21 +10,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.revature.models.User;
-import com.revature.utils.SessionFactoryUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class UserDaoImpl implements UserDao {
 	
 	private SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	private Logger log = LogManager.getRootLogger();
-	
-	public UserDaoImpl() {
-		super();
-	}
 
 	@Override
 	public User getUser(int id) {
+	    log.info("**IN USERDAO**");
 		User ret = null;
 		Session session = sf.openSession();
 		Transaction t = session.beginTransaction();
@@ -83,14 +78,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserByEmail(String email) {
-		log.info(email);
+		log.info("Attempting to get user by: " + email);
 		User ret = null;
 		Session session = sf.openSession();
 		Transaction t = session.beginTransaction();
 		Query q = session.createQuery("FROM User WHERE User.email = :p_email");
 		q.setString(1, email);
+		ret = (User) q.uniqueResult();
+		if (ret == null) {
+			log.info("Unable to find user for email " + email);
+		}
 		t.commit();
 		session.close();
+		log.info("dao: " + ret.toString());
 		return ret;
 	}
 	

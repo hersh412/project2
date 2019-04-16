@@ -30,11 +30,5 @@ public class QuoteController {
 	@Autowired
 	public void setQuoteservice(QuoteService quoteservice) {
 		this.quoteservice = quoteservice;
-	}
-
-
-	
-	
-	
+	}	
 }
-+0ya
