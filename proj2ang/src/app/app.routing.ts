@@ -7,7 +7,7 @@ import { QuoteComponent } from './quote/quote.component';
 
 const appRoutes: Routes = [
     { path: '', component: NavbarComponent },
-    { path: '/quote', component: QuoteComponent },
+    { path: 'quote', component: QuoteComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
