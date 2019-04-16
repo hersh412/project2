@@ -20,9 +20,9 @@ public class SessionFactoryUtil {
 //		configuration.setProperty("hibernate.default_schema", System.getenv("proj2_SCHEMA"));
 		
 		Configuration configuration = new Configuration().configure();
-		configuration.setProperty("hibernate.connection.url", "jdbc:postgresql://rdbinstance.cgpdlq9mpldh.us-east-2.rds.amazonaws.com:5432/postgres");
-		configuration.setProperty("hibernate.connection.username","jswagg");
-		configuration.setProperty("hibernate.connection.password", "bvd879fuG9wWYq1HZhM6");
+		configuration.setProperty("hibernate.connection.url", "REDACTED");
+		configuration.setProperty("hibernate.connection.username","REDACTED");
+		configuration.setProperty("hibernate.connection.password", "REDACTED");
 		configuration.setProperty("hibernate.default_schema", "public");
 		logger.info("finished setting properties");
 		
