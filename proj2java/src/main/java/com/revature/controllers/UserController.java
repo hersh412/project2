@@ -14,7 +14,6 @@ import java.util.List;
 public class UserController {
 
 	private UserService userService;
-
 	private AuthService authService;
 
 	@GetMapping
@@ -54,11 +53,6 @@ public class UserController {
 	@Autowired
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
-	}
-
-	public UserController() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

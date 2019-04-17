@@ -10,15 +10,9 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 @Component
-public class QuoteDaoImpl implements QuoteDao {
-
+public class QuoteDaoImpl implements QuoteDao  {
     private SessionFactory sf = SessionFactoryUtil.getSessionFactory();
     private Logger log = LogManager.getRootLogger();
-
-    public QuoteDaoImpl(SessionFactory sf) {
-        super();
-        this.sf = sf;
-    }
 
     public QuoteDaoImpl() {
     }

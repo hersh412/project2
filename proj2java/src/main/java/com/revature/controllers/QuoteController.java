@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.revature.models.Quote;
+import com.revature.services.QuoteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
 @CrossOrigin(origins="*")
 public class QuoteController {
 
-	//private QuoteService  quoteservice;
+	private QuoteService quoteservice;
 	private static final Logger log = Logger.getLogger("QuoteController");
 
 	@PostMapping(value="/quote/generate", consumes="application/json")
