@@ -1,25 +1,24 @@
 package com.revature.daos;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.revature.models.User;
+import com.revature.utils.SessionFactoryUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-import com.revature.models.User;
-import com.revature.utils.SessionFactoryUtil;
+import java.util.ArrayList;
+import java.util.List;
 
-@Repository
+@Component
 public class UserDaoImpl implements UserDao {
-	
+
 	private SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	private Logger log = LogManager.getRootLogger();
-	
+
 	public UserDaoImpl() {
 		super();
 	}
@@ -53,7 +52,7 @@ public class UserDaoImpl implements UserDao {
 		s.update(user);
 		t.commit();
 		s.close();
-		
+
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 		q.setString(1, email);
 		t.commit();
 		s.close();
-		
+
 	}
 
 	@Override
@@ -86,10 +85,15 @@ public class UserDaoImpl implements UserDao {
 		User ret = null;
 		Session session = sf.openSession();
 		Transaction t = session.beginTransaction();
-		Query q = session.createQuery("FROM User WHERE User.email = :p_email");
-		q.setString(1, email);
+		//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
+		Query q = session.createQuery("from User u where u.email = :p_email");
+		ret = (User) q.setString("p_email", email).uniqueResult();
+		//ret = (User) q.uniqueResult();
 		t.commit();
 		session.close();
 		return ret;
 	}
+
+
+
 }

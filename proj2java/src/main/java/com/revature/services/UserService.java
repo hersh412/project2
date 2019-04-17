@@ -11,6 +11,5 @@ public interface UserService {
 	public void removeUser(String email);
 	public User changeUser(String email, User user);
 	public User addUser(User user);
-	public User authenticate(User user);
 
 }

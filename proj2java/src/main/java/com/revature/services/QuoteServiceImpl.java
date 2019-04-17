@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class QuoteServiceImpl implements QuoteService {
+
     private static final Logger log = LogManager.getLogger(QuoteServiceImpl.class);
     private QuoteDao qd;
 

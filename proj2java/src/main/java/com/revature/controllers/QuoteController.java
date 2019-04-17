@@ -1,8 +1,6 @@
 package com.revature.controllers;
 
 import com.revature.models.Quote;
-import com.revature.services.QuoteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,25 +15,13 @@ import java.util.logging.Logger;
 @CrossOrigin(origins="*")
 public class QuoteController {
 
-    private QuoteService quoteservice;
+	//private QuoteService  quoteservice;
 	private static final Logger log = Logger.getLogger("QuoteController");
 
-	
 	@PostMapping(value="/quote/generate", consumes="application/json")
 	public ResponseEntity generateQuote(@RequestBody Quote quote, HttpSession sess)  {
-        quoteservice.addQuote(quote);
 		return new ResponseEntity("{\"price\" : \"$1500\"}", HttpStatus.OK);
 	}
 
-	@Autowired
-	public void setQuoteservice(QuoteService quoteservice) {
-		this.quoteservice = quoteservice;
-	}
-
-	public QuoteController() {
-		// TODO Auto-generated constructor stub
-	}	
-	
-	
 
 }

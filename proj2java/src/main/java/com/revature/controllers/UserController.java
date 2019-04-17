@@ -14,43 +14,43 @@ import java.util.List;
 public class UserController {
 
 	private UserService userService;
-	
+
 	private AuthService authService;
 
-	@GetMapping(value="/user")
+	@GetMapping
 	public List<User> getAllUsers(){
 		return userService.getAllUsers();
 	}
-	
-	@GetMapping(value="/user/{email}")
+
+	@GetMapping("/user/{email}")
 	public User getUserByEmail(@PathVariable String email) {
 		return userService.getUserByEmail(email);
 	}
-	
-	@PostMapping(value="user/", consumes = "application/json")
+
+	@PostMapping(consumes = "application/json")
 	public void makeUser(@RequestBody User user) {
 		userService.addUser(user);
 	}
-	
+
 	@PostMapping(value="/user/validate", consumes = "application/json")
 	public User validate(@RequestBody User user, HttpSession sess) {
 		User authUser = authService.validateUser(user);
-		
+
 		if (authUser != null) {
 			sess.setAttribute("user", authUser);
 			return authUser;
-			
+
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@Autowired
 	public void setAuthService(AuthService authService) {
 		this.authService = authService;
@@ -60,5 +60,5 @@ public class UserController {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-}
+
+}q
