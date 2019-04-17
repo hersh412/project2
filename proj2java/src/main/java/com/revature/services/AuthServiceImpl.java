@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.models.User;
 
+@Service
 public class AuthServiceImpl implements AuthService {
 
 	private static final Logger log = Logger.getLogger("AuthService");
