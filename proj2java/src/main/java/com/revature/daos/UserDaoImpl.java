@@ -87,9 +87,10 @@ public class UserDaoImpl implements UserDao {
 		User ret = null;
 		Session session = sf.openSession();
 		Transaction t = session.beginTransaction();
-		Query q = session.createQuery("FROM User WHERE User.email = :p_email");
-		q.setString(1, email);
-		ret = (User) q.uniqueResult();
+		//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
+		Query q = session.createQuery("from User u where u.email = :p_email");
+		ret = (User) q.setString("p_email", email).uniqueResult();
+		//ret = (User) q.uniqueResult();
 		t.commit();
 		session.close();
 		return ret;
