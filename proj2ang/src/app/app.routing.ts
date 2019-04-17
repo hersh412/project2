@@ -5,8 +5,7 @@ import { NavbarComponent } from '../app/navbar/navbar.component';
 import { AuthorizationGuard } from '../app/guards/authorization.guard';
 
 const appRoutes: Routes = [
-    { path: '', component: NavbarComponent },
-
+    { path: '', component: NavbarComponent},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
  url = '/WEB-INF/pages/users';
- loginUrl = '/user';
+ loginUrl = '/login';
 
  constructor(private http: HttpClient) { }
 
@@ -27,11 +27,7 @@ export class UsersService {
    return this.http.get<Users>(this.url + '/byemail/' + userEmail).toPromise();
  }
 
-  /*
- loginValid(id: number): Promise<Users>{
-   return this.http.get<Users>(this.loginUrl).toPromise();
- }
- */
+
 
  editUser(user: Users): Observable<Users> {
    return this.http.put<Users>(this.url, user);
