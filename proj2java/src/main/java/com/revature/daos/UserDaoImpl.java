@@ -1,9 +1,7 @@
 package com.revature.daos;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.revature.models.User;
+import com.revature.utils.SessionFactoryUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
@@ -12,8 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
-import com.revature.models.User;
-import com.revature.utils.SessionFactoryUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -81,19 +79,19 @@ public class UserDaoImpl implements UserDao {
 		return ul;
 	}
 
-	@Override
-	public User getUserByEmail(String email) {
-		log.info(email);
-		User ret = null;
-		Session session = sf.openSession();
-		Transaction t = session.beginTransaction();
-		//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
-		Query q = session.createQuery("from User u where u.email = :p_email");
-		ret = (User) q.setString("p_email", email).uniqueResult();
-		//ret = (User) q.uniqueResult();
-		t.commit();
-		session.close();
-		return ret;
+		@Override
+		public User getUserByEmail(String email) {
+			log.info(email);
+			User ret = null;
+			Session session = sf.openSession();
+			Transaction t = session.beginTransaction();
+			//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
+			Query q = session.createQuery("from User u where u.email = :p_email");
+			ret = (User) q.setString("p_email", email).uniqueResult();
+			//ret = (User) q.uniqueResult();
+			t.commit();
+			session.close();
+			return ret;
 	}
 	
 	
