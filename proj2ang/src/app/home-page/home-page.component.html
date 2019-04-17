@@ -1,15 +1,17 @@
 <nav class="navbar navbar-light">
   <div class="container">
     <a class="navbar navbar-brand" routerLink="/">CREDit</a>
-    <form #f="nhForm" class="form-inline pull-xs-right" (ngSubmit)="signIn(f.value)">
+    <form #f="ngForm" class="form-inline pull-xs-right" (ngSubmit)="signIn(f.value)">
       <input
         ngModel
         type="email"
+        name="email"
         class="form-control mr-2" id="exampleInputEmail1"
         placeholder="Email Address"/>
       <input
         ngModel
         type="password"
+        name="password"
         class="form-control mr-2"
         id="inlineFormInputGroup"
         placeholder="Password"/>

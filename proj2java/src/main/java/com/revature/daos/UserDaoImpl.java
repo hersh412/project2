@@ -15,10 +15,10 @@ import java.util.List;
 
 @Component
 public class UserDaoImpl implements UserDao {
-
+	
 	private SessionFactory sf = SessionFactoryUtil.getSessionFactory();
 	private Logger log = LogManager.getRootLogger();
-
+	
 	public UserDaoImpl() {
 		super();
 	}
@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao {
 		s.update(user);
 		t.commit();
 		s.close();
-
+		
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 		q.setString(1, email);
 		t.commit();
 		s.close();
-
+		
 	}
 
 	@Override
@@ -79,21 +79,21 @@ public class UserDaoImpl implements UserDao {
 		return ul;
 	}
 
-	@Override
-	public User getUserByEmail(String email) {
-		log.info(email);
-		User ret = null;
-		Session session = sf.openSession();
-		Transaction t = session.beginTransaction();
-		//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
-		Query q = session.createQuery("from User u where u.email = :p_email");
-		ret = (User) q.setString("p_email", email).uniqueResult();
-		//ret = (User) q.uniqueResult();
-		t.commit();
-		session.close();
-		return ret;
+		@Override
+		public User getUserByEmail(String email) {
+			log.info(email);
+			User ret = null;
+			Session session = sf.openSession();
+			Transaction t = session.beginTransaction();
+			//Query q = session.createSQLQuery("select * FROM \"user\" u WHERE u.email = :p_email");
+			Query q = session.createQuery("from User u where u.email = :p_email");
+			ret = (User) q.setString("p_email", email).uniqueResult();
+			//ret = (User) q.uniqueResult();
+			t.commit();
+			session.close();
+			return ret;
 	}
-
-
+	
+	
 
 }
