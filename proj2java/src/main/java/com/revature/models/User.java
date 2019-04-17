@@ -26,7 +26,9 @@ public class User {
 	private String city;
 	private String state;
 	private String zip;
-	private int gender;
+	@Column(name="is_male")
+	private boolean gender;
+	
 	public int getId() {
 		return id;
 	}
@@ -93,12 +95,16 @@ public class User {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public int getGender() {
+
+	
+	public boolean isGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -108,7 +114,7 @@ public class User {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fName == null) ? 0 : fName.hashCode());
-		result = prime * result + gender;
+		result = prime * result + (gender ? 1231 : 1237);
 		result = prime * result + id;
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -179,6 +185,8 @@ public class User {
 			return false;
 		return true;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", userconf=" + userconf + ", fName="
