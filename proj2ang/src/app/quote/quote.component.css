@@ -1,0 +1,19 @@
+.navbar-brand {
+    font-family: titillium web, sands-serif;
+    font-size: 1.5rem!important;
+    padding-top: 0!important;
+    margin-right:2rem!important;
+    color:#62013c!important;
+}
+
+.jumboimg {
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    height:25rem;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom:12px;
+    right:1px;
+}
