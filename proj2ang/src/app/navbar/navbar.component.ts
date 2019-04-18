@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../model/user.model';
+import { Users } from '../model/user.model';
 import { UsersService } from '../../services/user.service';
 
 
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     // console.log(email);
     // console.log(password);
 
-    let promise = new Promise<User>((resolve) => {
+    let promise = new Promise<Users>((resolve) => {
       resolve(this.usersService.getUser(email, password));
     });
 
