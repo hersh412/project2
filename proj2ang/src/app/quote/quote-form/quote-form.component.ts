@@ -27,7 +27,7 @@ export class QuoteFormComponent {
 
       onSubmit() {
         const quote = this.quoteForm.value;
-        const URL = 'http://localhost:8080/project2_war/quote/generate';
+        const URL = 'http://localhost:8080/project2/quote/generate';
         this.http.post(URL, quote).subscribe(response => {
           console.log(response);
           this.quoteYearlyPrice = response;
