@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
-import { Users } from '../app/model/user.model';
+import { User } from '../app/model/user.model';
 import { Observable } from 'rxjs';
 
 
@@ -13,8 +13,8 @@ export class UsersService {
 
  constructor(private http: HttpClient) { }
 
- getUsers(): Observable<Users[]> {
-   return this.http.get<Users[]>(this.url);
+ getUsers(): Observable<User[]> {
+   return this.http.get<User[]>(this.url);
  }
 
  /*
@@ -23,8 +23,8 @@ export class UsersService {
  }
  */
 
- getUser(userEmail: string, userPassword: string): Promise<Users> {
-   return this.http.get<Users>(this.url + '/byemail/' + userEmail).toPromise();
+ getUser(userEmail: string, userPassword: string): Promise<User> {
+   return this.http.get<User>(this.url + '/byemail/' + userEmail).toPromise();
  }
 
   /*
@@ -33,7 +33,7 @@ export class UsersService {
  }
  */
 
- editUser(user: Users): Observable<Users> {
-   return this.http.put<Users>(this.url, user);
+ editUser(user: User): Observable<User> {
+   return this.http.put<User>(this.url, user);
  }
 }
