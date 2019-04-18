@@ -12,6 +12,7 @@ import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import {AuthService} from './auth.service';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AuthService} from './auth.service';
     HomePageComponent,
     QuoteFormComponent,
     SignupComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,10 @@ import {AuthService} from './auth.service';
       {
         path: 'addvehicle',
         component: AddVehicleComponent
+      },
+      {
+        path: 'customer',
+        component: CustomerComponent
       }
     ])
   ],

@@ -19,7 +19,7 @@ export class HomePageComponent {
     this.authService.login(credentials)
       .subscribe(result => {
         if (result)
-          this.router.navigate(['/account']);
+          this.router.navigate(['/customer']);
         else
           this.invalidLogin = true;
       });

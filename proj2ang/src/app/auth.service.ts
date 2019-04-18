@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(credentials) {
-    return this.http.post('http://localhost:8080/project2/users/validate', credentials);
+    return this.http.post('http://localhost:8080/project2_war/user/validate', credentials);
   }
 
   logout() {}
