@@ -1,51 +1,59 @@
 package com.revature.services;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.revature.models.User;
 
-public class AuthServiceImpl implements AuthService {
+import com.revature.daos.AuthDao;
+import com.revature.models.Auth;
+import com.revature.models.User;
+import com.revature.utils.TokenFactoryUtil;
+
+@Service
+public class AuthServiceImpl {
 
 	private static final Logger log = Logger.getLogger("AuthService");
 
-	private UserService userService;
+	private AuthDao authDao;
 	
-	@Override
-	public User validateUser(User user) {
+	
+	public String validateAuth(String token) {
 		
-		log.log(Level.INFO, "Attempted login: " + user);
-		
-		User validatedUser = userService.getUserByEmail(user.getEmail());
-		
-		log.log(Level.INFO, "Actual Credentials: " + validatedUser);
-		
-		if(validatedUser != null && validatedUser.getPassword().equals(user.getPassword())) {
-			
-			return validatedUser;
-			
-		}
-		
-		return null;
+		return "Invalid";
 	}
-
+	
+	public Auth createAuth(int userId,int userConf,Auth in) {
+		Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
+		in.setTimeStamp(ts);
+		in.setKey(TokenFactoryUtil.getToken(userId));
+		in.setAuthLevel(userConf);
+		authDao.createAuth(in);
+		return in;
+		
+	}
 	
 	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+	public void setAuthDao(AuthDao authDao) {
+		this.authDao = authDao;
 	}
-
-
+	
 	public AuthServiceImpl() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AuthServiceImpl(UserService userService) {
+
+	public AuthServiceImpl(AuthDao authDao) {
 		super();
-		this.userService = userService;
+		this.authDao = authDao;
 	}
 
+
+	
+
+	
 }

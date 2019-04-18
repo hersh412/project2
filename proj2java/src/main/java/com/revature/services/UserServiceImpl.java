@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByEmail(String email) {
 		User ret = null;
-		logger.info("getUserBgyEmail_email: " + email);
+		logger.info("getUserByEmail_email: " + email);
 		ret = userdao.getUserByEmail(email);
 		return ret;
 	}

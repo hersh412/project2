@@ -2,8 +2,10 @@ package com.revature.models;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,14 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "userid", updatable=false, nullable=false)
 	private int id;
+	
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", unique=true, nullable=false, updatable=false)
+	private User user; 
 	private Date dob;
 	private String occupation;
 	private int state;
@@ -30,6 +39,14 @@ public class Customer {
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public int getId() {
 		return id;
 	}

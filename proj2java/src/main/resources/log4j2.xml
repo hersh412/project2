@@ -8,9 +8,9 @@
     </Console>
 
     <!-- File Appender -->
-<!--     <File name="File" fileName="c:/log/app.log">
+    <!-- <File name="File" fileName="c:/p2logs">
       <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
-    </File> -->
+    </File>-->
 
   </Appenders>
   <Loggers>

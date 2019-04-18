@@ -14,7 +14,7 @@
         <mapping class="com.revature.models.Employee"/>
         <mapping class="com.revature.models.Policy"/>
         <mapping class="com.revature.models.User"/>
-        <mapping class="com.revature.models.Vehicle"/>
+        <mapping class="com.revature.models.Auth"/>
         
     </session-factory>
 </hibernate-configuration>
