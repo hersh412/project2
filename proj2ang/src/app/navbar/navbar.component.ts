@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
    });
-   this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+   this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/navbar';
   }
 
   get fc() {return this.loginForm.controls; }
