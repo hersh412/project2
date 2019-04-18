@@ -1,5 +1,7 @@
+import { ZipOperator } from 'rxjs/internal/observable/zip';
+
 export class Users {
-    id: number;
+   // id: number;
     email: string;
     password: string;
     userconf: number;
@@ -9,12 +11,12 @@ export class Users {
     address2: string;
     city: string;
     state: string;
+    zip: string;
     isMale: boolean;
     token: string;
 
-    constructor(id: number, email: string, password: string, userconf: number, fName: string,
-                lName: string, address1: string, address2: string, city: string, state: string, isMale: boolean) {
-        this.id = id;
+    constructor(email: string, password: string, userconf: number, fName: string,
+                lName: string, address1: string, address2: string, city: string, state: string, zip: string, isMale: boolean) {
         this.email = email;
         this.password = password;
         this.userconf = userconf;
@@ -24,6 +26,7 @@ export class Users {
         this.address2 = address2;
         this.city = city;
         this.state = state;
+        this.zip = zip;
         this.isMale = isMale;
     }
 

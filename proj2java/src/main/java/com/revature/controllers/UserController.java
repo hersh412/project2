@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.models.Auth;
 import com.revature.models.User;
-import com.revature.services.AuthService;
+import com.revature.services.AuthServiceImpl;
 import com.revature.services.UserService;
 
 @RestController("/user")
@@ -22,8 +23,8 @@ import com.revature.services.UserService;
 public class UserController {
 
 	private UserService userService;
-	
-	private AuthService authService;
+	private AuthServiceImpl authServiceImpl;
+
 
 	@GetMapping
 	public List<User> getAllUsers(){
@@ -31,18 +32,18 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/{email}")
-	public User getUserByEmail(@PathVariable String email) {
-		return userService.getUserByEmail(email);
+	public User getUserByEmail(@RequestBody User user, Auth auth) {
+		return userService.getUserByEmail(user.getEmail());
 	}
 	
 	@PostMapping(consumes = "application/json")
-	public void makeUser(@RequestBody User user) {
+	public void makeUser(@RequestBody User user, Auth auth) {
 		userService.addUser(user);
 	}
-	
+	/*
 	@PostMapping(value="/user/validate", consumes = "application/json")
-	public User validate(@RequestBody User user, HttpSession sess) {
-		User authUser = authService.validateUser(user);
+	public User validate(@RequestBody User user, Auth auth) {
+		User authUser = AuthServiceImpl.validateAuth(user);
 		
 		if (authUser != null) {
 			sess.setAttribute("user", authUser);
@@ -53,15 +54,15 @@ public class UserController {
 		return null;
 		
 	}
-	
+	*/
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 	
 	@Autowired
-	public void setAuthService(AuthService authService) {
-		this.authService = authService;
+	public void setAuthService(AuthServiceImpl authService) {
+		this.authServiceImpl = authServiceImpl;
 	}
 
 	public UserController() {

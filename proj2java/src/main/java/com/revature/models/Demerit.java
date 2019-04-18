@@ -14,6 +14,9 @@ public class Demerit {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	//I added a commented out line in the customer class which will also include a set of demerits for each customer. This will likley be the ideal way to access 
+	// demerit information, as far as I underatnd it this will save us form having to build a demeric controller
+	// and angular model and service... 
 	@ManyToOne
 	@JoinColumn(name="customerid")
 	private Customer customer;

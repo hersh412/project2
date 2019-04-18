@@ -26,7 +26,9 @@ public class User {
 	private String city;
 	private String state;
 	private String zip;
-	private int gender;
+	@Column(name="is_male")
+	private boolean isMale;
+	
 	public int getId() {
 		return id;
 	}
@@ -93,12 +95,13 @@ public class User {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public int getGender() {
-		return gender;
+	public boolean getIsMale() {
+		return isMale;
 	}
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setIsMale(boolean isMale) {
+		this.isMale = isMale;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -108,8 +111,8 @@ public class User {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fName == null) ? 0 : fName.hashCode());
-		result = prime * result + gender;
 		result = prime * result + id;
+		result = prime * result + (isMale ? 1231 : 1237);
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
@@ -117,6 +120,7 @@ public class User {
 		result = prime * result + ((zip == null) ? 0 : zip.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -151,9 +155,9 @@ public class User {
 				return false;
 		} else if (!fName.equals(other.fName))
 			return false;
-		if (gender != other.gender)
-			return false;
 		if (id != other.id)
+			return false;
+		if (isMale != other.isMale)
 			return false;
 		if (lName == null) {
 			if (other.lName != null)
@@ -179,12 +183,33 @@ public class User {
 			return false;
 		return true;
 	}
+	
+	public User(int id, String email, String password, int userconf, String fName, String lName, String address1,
+			String address2, String city, String state, String zip, boolean isMale) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.userconf = userconf;
+		this.fName = fName;
+		this.lName = lName;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.isMale = isMale;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", userconf=" + userconf + ", fName="
 				+ fName + ", lName=" + lName + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", gender=" + gender + "]";
+				+ ", state=" + state + ", zip=" + zip + ", isMale=" + isMale + "]";
 	}
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}

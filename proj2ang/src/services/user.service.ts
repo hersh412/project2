@@ -28,6 +28,11 @@ export class UsersService {
  }
 
 
+ addUser(user: Users): Observable<Users> {
+  return this.http.post<Users>('http://localhost:8080/project2_war/user', user);
+}
+
+
 
  editUser(user: Users): Observable<Users> {
    return this.http.put<Users>(this.url, user);

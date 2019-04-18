@@ -1,33 +1,55 @@
 package com.revature.controllers;
 
-import java.util.logging.Logger;
+/*
+ * 
+ *  Configuring this controller to be compatable with stateless sessions
+ * 
+ * 			<--SCRATCH NOTES-->
+ * request.headers.get('Authorization') === 'Bearer fake-jwt-token'
+ */
 
-import javax.servlet.http.HttpSession;
 
+import com.revature.models.Quote;
+import com.revature.services.AuthServiceImpl;
+import com.revature.services.QuoteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.models.Quote;
+import javax.servlet.http.HttpSession;
+import java.util.logging.Logger;
+
 
 @RestController("/quote")
 @CrossOrigin(origins="*")
 public class QuoteController {
 	
-	//private QuoteService  quoteservice;
+	private AuthServiceImpl as;
+	private QuoteService quoteservice;
 	private static final Logger log = Logger.getLogger("QuoteController");
-	
+
 	@PostMapping(value="/quote/generate", consumes="application/json")
-	public ResponseEntity generateQuote(@RequestBody Quote quote, HttpSession sess)  {
-		System.out.println("*********");
-		System.out.println(quote);
-		//String s = "$1500";
-		return new ResponseEntity("{\"price\" : \"$1500\"}", HttpStatus.OK);
-		//return "s";
+	public ResponseEntity generateQuote(@RequestHeader (value="Authorization", required = true)String stringAuth,@RequestBody Quote quote)  {
+		log.info("*Got quote request: " + quote.toString());
+		log.info("Authorization token string: "+stringAuth);
+		//as.validateAuth();
+		double quotePrice = quoteservice.generateQuote(quote);
+		return new ResponseEntity(quotePrice, HttpStatus.OK);
+	}
+
+	@Autowired
+	public void setQuoteservice(QuoteService quoteservice) {
+		this.quoteservice = quoteservice;
 	}
 	
-
+	@Autowired
+	public void setAuthServiceImpl(AuthServiceImpl as) {
+		this.as = as;
+	}
 }

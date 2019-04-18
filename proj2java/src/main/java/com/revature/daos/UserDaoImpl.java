@@ -2,14 +2,18 @@ package com.revature.daos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.revature.models.User;
@@ -27,16 +31,16 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUser(int id) {
-		User ret = null;
+		User u = null;
 		Session session = sf.openSession();
-		Transaction t = session.beginTransaction();
-		ret = (User) session.get(User.class, id);
-		log.info(ret);
-		t.commit();
+		
+		u = (User) session.get(User.class, id);
+		//log.info(b);
+		//System.out.println(b);
 		session.close();
-		return ret;
+		return u;
 	}
-
+	
 	@Override
 	public void saveUser(User user) {
 		Session s = sf.openSession();
@@ -83,17 +87,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserByEmail(String email) {
-		log.info(email);
-		User ret = null;
+		log.info("Getting user with email: "+email);
 		Session session = sf.openSession();
-		Transaction t = session.beginTransaction();
-		Query q = session.createQuery("FROM User WHERE User.email = :p_email");
-		q.setString(1, email);
-		t.commit();
+		Criteria c = session.createCriteria(User.class);
+		c.add(Restrictions.ilike("email", email));
+		Set<User> users = new HashSet<User>(c.list());
 		session.close();
-		return ret;
+		return (User) users.toArray()[0];
 	}
 	
-	
-
 }

@@ -17,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.revature.models.User;
-import com.revature.daos.UserDaoImpl;
 import com.revature.utils.SessionFactoryUtil;
 
 @RunWith(MockitoJUnitRunner.class)
