@@ -77,6 +77,11 @@
       <button class="btn btn-primary" type="submit" [disabled]="!quoteForm.valid" required>Get Quote</button>
       </form>
     </div>
+    <div *ngIf="quoteGenerated" class="quote-result pt-4">
+      <p><h4>Your policy is estimated to be about {{ quoteYearlyPrice | currency: 'USD' }} per year or about {{ quoteYearlyPrice / 12  | currency:'USD' }} per month.</h4>
+      <p><h5>Would you like to purchase?</h5><a routerLink="/signup"><button class="btn btn-md btn-primary bg-success"(onClick)="purchase()">Purchase</button></a>
+
+    </div>
     <div class="disclaimer">
          * Rate quotes generated are estimates based on the information you provided, considering currently applicable laws, rates and factors, all of which are subject to change without notice.
          A rate quote does not constitute a contract, binder or agreement to extend insurance coverage. Your actual rate may vary.

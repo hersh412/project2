@@ -23,7 +23,7 @@ export class HomePageComponent {
         if (result) {
           this.currentUser = result as User;
           console.log(this.currentUser);
-          localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
+          localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
           this.router.navigate(['/customer']);
         } else {
           this.invalidLogin = true;
