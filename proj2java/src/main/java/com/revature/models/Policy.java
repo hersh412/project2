@@ -13,6 +13,22 @@ import javax.persistence.Table;
 @Table(name="policy")
 public class Policy {
 
+	/*
+	 * 
+	 *   			<--CODE REVIEW NOTES --andy-->
+	 * 
+	 * -This class still needs a many to many mapping with the customer class
+	 * We can possibly access all policy information from an array within the customer class
+	 * I am not 100% sure on this but I cant really think of a reason off the top of my head why 
+	 * it would not work
+	 * 
+	 * -I also believe that this would class would benefit from a one to main relation with vehicles
+	 * inside of this class. My logic goes along the same lines as the above note.
+	 * I believe thatshould be able to access all information Customer, Demerit, policy and vehicle from 
+	 * a single controller, angular model/service....
+	 * 
+	 */
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
