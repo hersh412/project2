@@ -12,6 +12,8 @@ import { AuthTokenInterceptor } from './helper/authtoken.interceptor';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
     AlertComponent,
     HomePageComponent,
     SignupComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    QuoteFormComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
