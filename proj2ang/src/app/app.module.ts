@@ -13,13 +13,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { QuoteFormComponent } from './quote/quote-form/quote-form.component';
-<<<<<<< HEAD
 import { QuoteComponent} from './quote/quote.component';
 import {CustomerHomeComponent} from './components/customer-home/customer-home.component';
 
-=======
-import { QuoteComponent } from './quote/quote.component';
->>>>>>> 3a45047c526cbd37a9c78c9d6541199977994833
 
 @NgModule({
   declarations: [
@@ -31,12 +27,9 @@ import { QuoteComponent } from './quote/quote.component';
     AddVehicleComponent,
     QuoteFormComponent,
     SignupComponent,
-<<<<<<< HEAD
     QuoteComponent,
     CustomerHomeComponent
-=======
-    QuoteComponent
->>>>>>> 3a45047c526cbd37a9c78c9d6541199977994833
+
   ],
   imports: [
     BrowserModule,
