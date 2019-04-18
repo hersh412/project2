@@ -18,7 +18,7 @@
   <AppenderRef ref="Console" />
 </Logger>
     <!-- Log everything in hibernate -->
-      <Logger name="org.hibernate" level="INFO" additivity="false">
+      <Logger name="org.hibernate" level="WARN" additivity="false">
       <AppenderRef ref="Console" />
     </Logger>
 
@@ -29,7 +29,7 @@
     </Logger>
 
       <!-- Log JDBC bind parameters originally lvel = trace -->
-      <Logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false">
+      <Logger name="org.hibernate.type.descriptor.sql" level="error" additivity="false">
       <AppenderRef ref="Console" />
 <!--       <AppenderRef ref="File" /> -->
     </Logger>

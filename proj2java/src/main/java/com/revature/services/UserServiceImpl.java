@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	public User addUser(User user) {
 		User ret = null;
 		userdao.saveUser(user);
-		return null;
+		return user;
 	}
 
 	public UserServiceImpl() {

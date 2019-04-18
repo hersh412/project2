@@ -3,6 +3,8 @@ package com.revature.controllers;
 import com.revature.models.User;
 import com.revature.services.AuthService;
 import com.revature.services.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import java.util.List;
 @RestController("/user")
 @CrossOrigin(origins="*")
 public class UserController {
-
+	private static final Logger logger = LogManager.getLogger(UserController.class);
 	private UserService userService;
 	private AuthService authService;
 
@@ -28,6 +30,8 @@ public class UserController {
 
 	@PostMapping(consumes = "application/json")
 	public void makeUser(@RequestBody User user) {
+		logger.info("** POST REQUEST: USER");
+		logger.info(user);
 		userService.addUser(user);
 	}
 

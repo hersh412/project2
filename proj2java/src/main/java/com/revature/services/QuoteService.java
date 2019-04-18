@@ -8,7 +8,7 @@ public interface QuoteService {
 
 
     void addQuote(Quote q);
-
+    Double generateQuote(Quote q);
     List getAllQuotes();
 	
 
