@@ -1,23 +1,31 @@
 package com.revature.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.revature.daos.UserDao;
+import com.revature.daos.UserDaoImpl;
+import com.revature.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.daos.UserDao;
-import com.revature.daos.UserDaoImpl;
-import com.revature.models.User;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
-	UserDao userdao;
+
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
-	
+	UserDao userdao;
+
+	public UserServiceImpl() {
+		this.userdao = new UserDaoImpl();
+	}
+
+	public UserServiceImpl(UserDao userdao) {
+		super();
+		this.userdao = userdao;
+	}
+
 	@Autowired
 	public void setUserdao(UserDao userdao) {
 		logger.info("setting userdao");
@@ -48,8 +56,8 @@ public class UserServiceImpl implements UserService {
 	public User changeUser(String email, User user) {
 		if (userdao.getUserByEmail(email) != null) {
 			userdao.updateUser(email, user);
-		return user;
-	} 
+			return user;
+		}
 		return null;
 	}
 
@@ -59,18 +67,6 @@ public class UserServiceImpl implements UserService {
 		userdao.saveUser(user);
 		return null;
 	}
-	
-	public UserServiceImpl() {
-		this.userdao = new UserDaoImpl();
-	}
 
-	public UserServiceImpl(UserDao userdao) {
-		super();
-		this.userdao = userdao;
-	}
-
-	
-	
-	
 
 }

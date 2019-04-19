@@ -1,4 +1,3 @@
-    
 package com.revature.daos;
 
 import com.revature.models.Quote;

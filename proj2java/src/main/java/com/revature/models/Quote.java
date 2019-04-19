@@ -11,7 +11,7 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Timestamp timestamp;
-	private String zipcode;
+    private String zipcode;
     @Transient
     private String vehicleClass;
     @Transient
@@ -19,44 +19,55 @@ public class Quote {
     @Transient
     private String gender;
     @Transient
-	private String age;
+    private String age;
+
+    public Quote() {
+        this.timestamp = new Timestamp(System.currentTimeMillis());
+    }
 
     public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getVehicleClass() {
-		return vehicleClass;
-	}
-	public void setVehicleClass(String vehicleClass) {
-		this.vehicleClass = vehicleClass;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getAge() {
-		return age;
-	}
-	public void setAge(String age) {
-		this.age = age;
-	}
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getVehicleClass() {
+        return vehicleClass;
+    }
+
+    public void setVehicleClass(String vehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
 
     public Quote(long id, String zipcode, String vehicleClass, String year, String gender, String age) {
         super();
@@ -107,10 +118,11 @@ public class Quote {
     public int hashCode() {
         return Objects.hash(id, timestamp, zipcode, vehicleClass, year, gender, age);
     }
-	public Quote() {
-        this.timestamp = new Timestamp(System.currentTimeMillis());
-	}
-	
-	
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+
 }
 	

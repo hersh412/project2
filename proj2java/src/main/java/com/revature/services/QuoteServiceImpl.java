@@ -36,8 +36,8 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Override
     public Double generateQuote(Quote q) {
-    double ret = 0;
-    ret += BASE_PRICE;
+		double ret = 0;
+		ret += BASE_PRICE;
 
         switch (q.getAge()) {
             case "Under 18":
@@ -66,28 +66,28 @@ public class QuoteServiceImpl implements QuoteService {
                 break;
         }
 
-    if (q.getGender().equals("Male"))
-        ret += ret * MALE_MULTIPLIER;
-    else
-        ret += ret * FEMALE_MULTIPLER;
+		if (q.getGender().equals("Male"))
+			ret += ret * MALE_MULTIPLIER;
+		else
+			ret += ret * FEMALE_MULTIPLER;
 
-    switch (q.getVehicleClass()) {
-        case "Sports Car":
-            ret += ret * SPORTS_CAR_MULTIPLIER;
-            break;
-        case "SUV":
-            ret += ret * SUV_LUX_MULTIPLIER;
-            break;
-        case "Luxury":
-            ret += ret * SUV_LUX_MULTIPLIER;
-            break;
-        default:
-            ret += ret * EVERYTHING_ELSE_MULTIPLIER;
-            break;
-    }
+		switch (q.getVehicleClass()) {
+			case "Sports Car":
+				ret += ret * SPORTS_CAR_MULTIPLIER;
+				break;
+			case "SUV":
+				ret += ret * SUV_LUX_MULTIPLIER;
+				break;
+			case "Luxury":
+				ret += ret * SUV_LUX_MULTIPLIER;
+				break;
+			default:
+				ret += ret * EVERYTHING_ELSE_MULTIPLIER;
+				break;
+		}
 
-    addQuote(q); //save to db
-    return ret;
+		addQuote(q); //save to db
+		return ret;
     }
 
     @Override
