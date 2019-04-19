@@ -4,14 +4,14 @@ import com.revature.models.User;
 import com.revature.utils.SessionFactoryUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.*;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -79,15 +79,28 @@ public class UserDaoImpl implements UserDao {
         return ul;
     }
 
+
+    /**
+     * This method searches the database for a user based on the email addressed provided in the argument.
+     * It will return exactly 1 User object if found, or null.
+     *
+     * @param email : String email address to search for
+     * @return User or null
+     */
     @Override
     public User getUserByEmail(String email) {
+        User ret = null;
         log.info("Getting user with email: " + email);
         Session session = sf.openSession();
-        Criteria c = session.createCriteria(User.class);
-        c.add(Restrictions.ilike("email", email));
-        Set<User> users = new HashSet<User>(c.list());
+        Query q = session.createQuery("from User u where u.email = :p_email");
+        ret = (User) q.setString(1, email).uniqueResult();
         session.close();
-        return (User) users.toArray()[0];
+        return ret;
+//        Criteria c = session.createCriteria(User.class);
+//        c.add(Restrictions.ilike("email", email));
+//        Set<User> users = new HashSet<User>(c.list());
+//        session.close();
+//        return (User) users.toArray()[0];
     }
 
 }
