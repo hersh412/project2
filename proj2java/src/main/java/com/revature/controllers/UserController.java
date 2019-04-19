@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController("/user")
 @CrossOrigin(origins = "*")
@@ -20,6 +21,7 @@ public class UserController {
 	private UserService userService;
 	private AuthServiceImpl authServiceImpl;
 	private PolicyService policyService;
+    private static final Logger log = Logger.getLogger("UserController");
 
 
 	public UserController() {
@@ -38,9 +40,10 @@ public class UserController {
 		userService.addUser(user);
 	}
 
-	@PostMapping(value = "/user/{id}/policy", consumes = "application/JSON", produces = "application/JSON")
+    @PostMapping(value = "/user/{id}/policy")
 	public ResponseEntity makePolicy(@RequestBody User user, @PathVariable int id) {
 		//todo
+        log.info("Getting Create Policy Request for User:" + id);
 		Policy p = new Policy();
 		p.setOwner(userService.getUserByUserId(id));
 		int policyID = policyService.addPolicy(p);

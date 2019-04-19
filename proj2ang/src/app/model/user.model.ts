@@ -1,7 +1,7 @@
 import { ZipOperator } from 'rxjs/internal/observable/zip';
 
 export class Users {
-   // id: number;
+    id: number;
     email: string;
     password: string;
     userconf: number;

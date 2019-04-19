@@ -55,7 +55,7 @@ export class SignupComponent {
       .subscribe(
         data => {
           this.router.navigate(['/addvehicle']);
-          //this.router.navigate(['/customerHome']); <-- THIS DOES NOT WORK
+          // this.router.navigate(['/customerHome']); <-- THIS DOES NOT WORK
           // this.router.navigate([this.returnUrl]); <-- THIS DOSENT WORK EITHER
         },
         error => {
