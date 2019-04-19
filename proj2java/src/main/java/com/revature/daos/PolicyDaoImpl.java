@@ -43,5 +43,14 @@ public class PolicyDaoImpl implements PolicyDao {
         return ret;
     }
 
+    @Override
+    public int save(Policy policy) {
+        Session session = sf.openSession();
+        Transaction t = session.beginTransaction();
+        int id = (int) session.save(policy);
+        t.commit();
+        session.close();
+        return id;
 
+    }
 }

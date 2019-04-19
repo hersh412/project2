@@ -8,6 +8,8 @@ import java.util.List;
 @Repository
 public interface PolicyDao {
 
+    int save(Policy policy);
+
     Policy getPolicyById(int id);
 
     List<Policy> getPoliciesByOwnerId(int policyOwner);

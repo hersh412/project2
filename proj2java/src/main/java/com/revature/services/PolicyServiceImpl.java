@@ -12,10 +12,10 @@ public class PolicyServiceImpl implements PolicyService {
 
     private PolicyDao policyDao;
     private Logger log = LogManager.getRootLogger();
-    private PolicyDao policyDao;
 
     @Override
     public void addPolicy(Policy p) {
+        policyDao.
 
     }
 
