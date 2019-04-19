@@ -15,39 +15,39 @@ import com.revature.models.User;
 @Service
 public class UserServiceImpl implements UserService {
 	
-	UserDao userdao;
+	UserDao userDao;
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 	
 	@Autowired
-	public void setUserdao(UserDao userdao) {
+	public void setUserdao(UserDao userDao) {
 		logger.info("setting userdao");
-		this.userdao = new UserDaoImpl();
+		this.userDao = userDao;
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
 		User ret = null;
 		logger.info("getUserByEmail_email: " + email);
-		ret = userdao.getUserByEmail(email);
+		ret = userDao.getUserByEmail(email);
 		return ret;
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		List<User> ul = null;
-		ul = new ArrayList<User>(userdao.getAllUsers());
+		ul = new ArrayList<User>(userDao.getAllUsers());
 		return ul;
 	}
 
 	@Override
 	public void removeUser(String email) {
-		userdao.deleteUser(email);
+		userDao.deleteUser(email);
 	}
 
 	@Override
 	public User changeUser(String email, User user) {
-		if (userdao.getUserByEmail(email) != null) {
-			userdao.updateUser(email, user);
+		if (userDao.getUserByEmail(email) != null) {
+			userDao.updateUser(email, user);
 		return user;
 	} 
 		return null;
@@ -56,17 +56,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User addUser(User user) {
 		User ret = null;
-		userdao.saveUser(user);
+		userDao.saveUser(user);
 		return null;
 	}
 	
 	public UserServiceImpl() {
-		this.userdao = new UserDaoImpl();
+		super();
 	}
 
-	public UserServiceImpl(UserDao userdao) {
+	public UserServiceImpl(UserDao userDao) {
 		super();
-		this.userdao = userdao;
+		this.userDao = userDao;
 	}
 
 	

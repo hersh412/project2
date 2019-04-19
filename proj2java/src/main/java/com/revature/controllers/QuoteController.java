@@ -30,14 +30,13 @@ import java.util.logging.Logger;
 @CrossOrigin(origins="*")
 public class QuoteController {
 	
-	private AuthServiceImpl as;
+
 	private QuoteService quoteservice;
 	private static final Logger log = Logger.getLogger("QuoteController");
 
 	@PostMapping(value="/quote/generate", consumes="application/json")
-	public ResponseEntity generateQuote(@RequestHeader (value="Authorization", required = true)String stringAuth,@RequestBody Quote quote)  {
+	public ResponseEntity generateQuote(@RequestBody Quote quote)  {
 		log.info("*Got quote request: " + quote.toString());
-		log.info("Authorization token string: "+stringAuth);
 		//as.validateAuth();
 		double quotePrice = quoteservice.generateQuote(quote);
 		return new ResponseEntity(quotePrice, HttpStatus.OK);
@@ -48,8 +47,5 @@ public class QuoteController {
 		this.quoteservice = quoteservice;
 	}
 	
-	@Autowired
-	public void setAuthServiceImpl(AuthServiceImpl as) {
-		this.as = as;
-	}
+
 }
