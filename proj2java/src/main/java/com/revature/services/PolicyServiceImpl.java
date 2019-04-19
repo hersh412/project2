@@ -15,22 +15,23 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void addPolicy(Policy p) {
-        policyDao.
-
+        policyDao.save(p);
     }
 
     @Override
     public void updatePolicy(Policy p) {
-
+        //todo
     }
 
     @Override
     public Policy getPolicyByPolicyId(int id) {
+        //todo
         return null;
     }
 
     @Override
     public List<Policy> getPoliciesByOwnerId(int id) {
+        //todo
         return null;
     }
 
