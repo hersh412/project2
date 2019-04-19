@@ -70,4 +70,11 @@ export class NavbarComponent implements OnInit {
                 });
 
   }
+
+  logout() {
+    this.authenticationService.logout();
+    this.notLoggedin = true;
+    this.router.navigate(['/']);
+    location.reload();
+  }
 }

@@ -1,71 +1,54 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3 ">
-      <div class="list-group ">
-        <a class="list-group-item list-group-item-action active">Dashboard</a>
-        <a class="list-group-item list-group-item-action">Personal Information</a>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <h4>{{ loggedinUser.fName + ' ' + loggedinUser.lName}}</h4>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <label class="col-4 col-form-label" for="">Nick Name*</label>
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-8">
-                </div>
-              </div>
-              <div class="row">
-                <div class="offset-4 col-8">
-                </div>
-              </div>
-            </div>
-          </div>
-
+  <ngb-tabset>
+    <ngb-tab title="Customer Information">
+      <ng-template ngbTabContent>
+        <div class="row">
+          <h4>{{ loggedinUser.fName + ' ' + loggedinUser.lName }}</h4>
         </div>
-      </div>
-    </div>
-  </div>
+        <div class="row">
+          <div class="col-sm-2">
+            Address:
+          </div>
+          <div class="col-sm-2">
+            {{ loggedinUser.address1 }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            Address 2:
+          </div>
+          <div class="col-sm-2">
+            {{ loggedinUser.address2 }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            City/State/Zip
+          </div>
+          <div class="col-sm-4">
+            {{ loggedinUser.city + ', ' + loggedinUser.state + ', ' + loggedinUser.zip` }}
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+      <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
+      <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee
+        squid.
+        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
+          farm-to-table
+          craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
+          vinyl
+          cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS
+          salvia
+          yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable
+          jean
+          shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher
+          vero
+          sint qui sapiente accusamus tattooed echo park.</p>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab [disabled]="true" title="Disabled">
+    </ngb-tab>
+  </ngb-tabset>
 </div>
