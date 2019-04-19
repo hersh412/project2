@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ZipcodeValidators } from './zipcode.validators';
@@ -25,7 +25,7 @@ export class QuoteFormComponent {
         age: ['', Validators.required]
       });
 
-      onSubmit() {
+      onSubmitQuote() {
         const quote = this.quoteForm.value;
         const URL = 'http://localhost:8080/project2/quote/generate';
         this.http.post(URL, quote).subscribe(response => {

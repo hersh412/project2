@@ -15,6 +15,7 @@ public class QuoteDaoImpl implements QuoteDao  {
     private Logger log = LogManager.getRootLogger();
 
     public QuoteDaoImpl() {
+    	super();
     }
 
     @Override

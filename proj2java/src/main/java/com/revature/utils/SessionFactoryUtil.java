@@ -21,9 +21,7 @@ public class SessionFactoryUtil {
         configuration.setProperty("hibernate.default_schema", System.getenv("proj2_SCHEMA"));
 
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		logger.info("Hibernate Registry builder created.");
 		sf = configuration.buildSessionFactory(serviceRegistry);
-		logger.info("SessionFactory created.");
 	}
 
 	public static SessionFactory getSessionFactory() {

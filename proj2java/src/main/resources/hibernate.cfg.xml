@@ -6,15 +6,16 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="show_sql">true</property>
         <property name="hibernate.connection.pool_size">5</property>
-        
-        <!--  <property name="hibernate.hbm2ddl.auto">create</property> -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- Annotated Class Mappings -->
         <mapping class="com.revature.models.Customer"/>
-        <mapping class="com.revature.models.Demerit"/>
+<!--        <mapping class="com.revature.models.Demerit"/>-->
         <mapping class="com.revature.models.Employee"/>
         <mapping class="com.revature.models.Policy"/>
         <mapping class="com.revature.models.User"/>
         <mapping class="com.revature.models.Auth"/>
+        <mapping class="com.revature.models.Quote"/>
+        <mapping class="com.revature.models.Vehicle"/>
         
     </session-factory>
 </hibernate-configuration>

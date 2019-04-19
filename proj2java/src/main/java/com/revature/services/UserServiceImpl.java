@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	
 	UserDao userdao;
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
-	
+
 	@Autowired
 	public void setUserdao(UserDao userdao) {
 		logger.info("setting userdao");
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		if (userdao.getUserByEmail(email) != null) {
 			userdao.updateUser(email, user);
 		return user;
-	} 
+	}
 		return null;
 	}
 
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 		userdao.saveUser(user);
 		return null;
 	}
-	
+
 	public UserServiceImpl() {
 		this.userdao = new UserDaoImpl();
 	}
