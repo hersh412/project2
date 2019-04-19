@@ -3,12 +3,16 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Users} from '../model/user.model';
 import {PasswordValidators} from './password.validators';
 import {UsersService} from '../../services/user.service';
+import {AuthenticationService} from '../../services/authentication.service';
+import {first} from 'rxjs/internal/operators/first';
+import {Router} from '@angular/router';
+import {AlertService} from '../../services/alert.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  providers: [UsersService]
+  providers: [UsersService, AuthenticationService]
 })
 export class SignupComponent {
 
@@ -28,7 +32,11 @@ export class SignupComponent {
   });
 
 
-  constructor(private fb: FormBuilder, private userService: UsersService) {
+  constructor(private fb: FormBuilder,
+              private userService: UsersService,
+              private  authenticationService: AuthenticationService,
+              private router: Router,
+              private alertService: AlertService) {
   }
 
   onSubmit() {
@@ -38,5 +46,16 @@ export class SignupComponent {
                             this.sf.controls.zipcode.value , this.sf.controls.gender.value === 'Male');
 
    this.userService.addUser(u).subscribe(result => console.log(result));
+   this.authenticationService.login(this.sf.controls.email.value, this.sf.controls.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['/addvehicle']);
+          //this.router.navigate(['/customerHome']); <-- THIS DOES NOT WORK
+          // this.router.navigate([this.returnUrl]); <-- THIS DOSENT WORK EITHER
+        },
+        error => {
+          this.alertService.error(error);
+        });
   }
 }
