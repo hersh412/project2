@@ -1,16 +1,7 @@
 package com.revature.controllers;
 
-/*
- *
- *  Configuring this controller to be compatable with stateless sessions
- *
- * 			<--SCRATCH NOTES-->
- * request.headers.get('Authorization') === 'Bearer fake-jwt-token'
- */
-
 
 import com.revature.models.Quote;
-import com.revature.services.AuthServiceImpl;
 import com.revature.services.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,8 +33,4 @@ public class QuoteController {
         this.quoteservice = quoteservice;
     }
 
-    @Autowired
-    public void setAuthServiceImpl(AuthServiceImpl as) {
-        this.as = as;
-    }
 }
