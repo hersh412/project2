@@ -40,6 +40,14 @@ public class Policy {
         // TODO Auto-generated constructor stub
     }
 
+    public Policy(Date startDate, Date endDate, double deductible, double premium, User owner) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deductible = deductible;
+        this.premium = premium;
+        this.owner = owner;
+    }
+
     @Override
     public String toString() {
         return "Policy{" +
@@ -117,6 +125,4 @@ public class Policy {
     public void setPremium(double premium) {
         this.premium = premium;
     }
-
-
 }
