@@ -15,6 +15,7 @@
   .jumbotron{
     background-image: url('https://imgur.com/el5VXvh.png');
     background-size: 100% 100%; 
+    min-height: 350px;
   }
 
   #login .container #login-row #login-column #login-box #login-form {

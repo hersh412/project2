@@ -1,41 +1,22 @@
 package com.revature.services;
 
+import com.revature.daos.AuthDao;
+import com.revature.models.Auth;
+import com.revature.utils.TokenFactoryUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.revature.models.User;
-
-public class AuthServiceImpl implements AuthService {
+@Service
+public class AuthServiceImpl {
 
 	private static final Logger log = Logger.getLogger("AuthService");
 
-	private UserService userService;
-	
-	@Override
-	public User validateUser(User user) {
-		
-		log.log(Level.INFO, "Attempted login: " + user);
-		
-		User validatedUser = userService.getUserByEmail(user.getEmail());
-		
-		log.log(Level.INFO, "Actual Credentials: " + validatedUser);
-		
-		if(validatedUser != null && validatedUser.getPassword().equals(user.getPassword())) {
-			
-			return validatedUser;
-			
-		}
-		
-		return null;
-	}
-
-	
-	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+	private AuthDao authDao;
 
 
 	public AuthServiceImpl() {
@@ -43,9 +24,31 @@ public class AuthServiceImpl implements AuthService {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AuthServiceImpl(UserService userService) {
+	public AuthServiceImpl(AuthDao authDao) {
 		super();
-		this.userService = userService;
+		this.authDao = authDao;
 	}
+
+	public String validateAuth(String token) {
+
+		return "Invalid";
+	}
+
+	public Auth createAuth(int userId, int userConf, Auth in) {
+		Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
+		in.setTimeStamp(ts);
+		in.setKey(TokenFactoryUtil.getToken(userId));
+		in.setAuthLevel(userConf);
+		authDao.createAuth(in);
+		log.log(Level.INFO, "auth persisted " + in.getKey());
+		return in;
+
+	}
+
+	@Autowired
+	public void setAuthDao(AuthDao authDao) {
+		this.authDao = authDao;
+	}
+
 
 }

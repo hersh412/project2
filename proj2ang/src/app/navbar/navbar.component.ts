@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
     ) {
       if (this.authenticationService.loggedinUserValue) { 
         this.notLoggedin = false;
+        this.router.navigate(['/']);
     }
      }
 
@@ -36,7 +37,7 @@ export class NavbarComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
    });
-   this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+   this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'customerHome';
   }
 
   get fc() {return this.loginForm.controls; }
@@ -58,7 +59,10 @@ export class NavbarComponent implements OnInit {
     .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                  this.loading = false;
+                  console.log("just before navigate");
+                  //this.router.navigate(['/customerHome']);
+                  this.router.navigate(['/']);
                 },
                 error => {
                     this.alertService.error(error);

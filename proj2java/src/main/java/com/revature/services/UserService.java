@@ -1,15 +1,19 @@
 package com.revature.services;
 
-import java.util.List;
-
 import com.revature.models.User;
 
+import java.util.List;
+
 public interface UserService {
-	
-	public User getUserByEmail(String email);
-	public List<User> getAllUsers();
-	public void removeUser(String email);
-	public User changeUser(String email, User user);
-	public User addUser(User user);
+
+	User getUserByEmail(String email);
+
+	List<User> getAllUsers();
+
+	void removeUser(String email);
+
+	User changeUser(String email, User user);
+
+	User addUser(User user);
 
 }

@@ -1,0 +1,166 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-11 bg-light p-4 rounded">
+      <p></p>
+      <form [formGroup]="sf" (ngSubmit)="onSubmit()">
+        <div id="first">
+          <h4 class="text-center p-1 rounded text-light" style="background-color: #62013c">
+            Purchase Insurance: Personal Information
+          </h4>
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <label for="firstname">First Name</label>
+            </div>
+            <div class="col-sm-4">
+              <input
+                class="form-control form-control-sm"
+                formControlName="firstname"
+                id="firstname"
+                placeholder="First Name"
+                type="text">
+            </div>
+            <div class="col-sm-2">
+              <label>Last Name</label>
+            </div>
+            <div class="col-md-4">
+              <input
+                class="form-control form-control-sm"
+                formControlName="lastname"
+                id="lastname"
+                placeholder="Last Name"
+                type="text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2">
+              <label for="address">Address</label>
+            </div>
+            <div class="col-md-5">
+              <input
+                class="form-control form-control-sm"
+                formControlName="address"
+                id="address"
+                placeholder="Street Address">
+            </div>
+            <div class="col-sm-2">
+              <label for="address2">Apt/Unit/Suite</label>
+            </div>
+            <div class="col-md-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="address2"
+                id="address2"
+                placeholder="Apt"
+                type="text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <label for="city">City</label>
+            </div>
+            <div class="col-sm-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="city"
+                id="city"
+                placeholder="City"
+                type="text">
+            </div>
+            <div class="col-sm-1">
+              <label for="state">State</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-control form-control-sm"
+                formControlName="state"
+                id="state"
+                placeholder=""
+                type="text">
+            </div>
+            <div class="col-sm-1">
+              <label for="zipcode">Zip</label>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control form-control-sm"
+                formControlName="zipcode"
+                id="zipcode"
+                placeholder="Zipcode"
+                type="text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <label for="phone">Phone</label>
+            </div>
+            <div class="col-sm-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="phone"
+                id="phone"
+                placeholder="Phone Number"
+                type="text">
+            </div>
+            <div class="col-sm-1">
+              <label for="email">Email</label>
+            </div>
+            <div class="col-sm-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="email"
+                id="email"
+                placeholder="Email address"
+                type="text">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <label for="gender">Gender</label>
+            </div>
+            <div class="col-sm-2">
+              <select
+                class="form-control form-control-sm"
+                formControlName="gender"
+                id="gender">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+          </div>
+          <hr/>
+          <h4 class="text-center p-1 rounded text-light" style="background-color: #62013c">
+            Account Information: Create Password
+          </h4>
+          <div class="form-group row">
+            <div class="col-sm-2">
+              <label for="password">Password</label>
+            </div>
+            <div class="col-sm-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="password"
+                id="password"
+                placeholder="Account Password"
+                type="password">
+            </div>
+            <div class="col-sm-2">
+              <label for="confirmpw">Confirm Password</label>
+            </div>
+            <div class="col-sm-3">
+              <input
+                class="form-control form-control-sm"
+                formControlName="confirmpw"
+                id="confirmpw"
+                placeholder="Confirm Password"
+                type="password">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row justify-content-center">
+          <button class="btn btn-primary text-light text-center mr-1" type="submit">Register</button>
+          <button class="btn btn-primary text-light text-center" type="reset">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

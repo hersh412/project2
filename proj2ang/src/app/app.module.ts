@@ -9,12 +9,25 @@ import { routing } from './app.routing';
 
 import { HttperrorInterceptor } from './helper/httperror.interceptor';
 import { AuthTokenInterceptor } from './helper/authtoken.interceptor';
-
+import { HomePageComponent } from './home-page/home-page.component';
+import { SignupComponent } from './signup/signup.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { QuoteFormComponent } from './quote/quote-form/quote-form.component'
+import { QuoteComponent} from './quote/quote.component';
+import {CustomerHomeComponent} from './components/customer-home/customer-home.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AlertComponent
+    AlertComponent,
+    HomePageComponent,
+    SignupComponent,
+    AddVehicleComponent,
+    QuoteFormComponent,
+    SignupComponent,
+    CustomerHomeComponent,
+    QuoteComponent
+
   ],
   imports: [
     BrowserModule,

@@ -15,11 +15,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
         if (loggedinUser && loggedinUser.token){
             request = request.clone({
                 setHeaders: {
-                    'Access-Control-Allow-Origin': 'http://localhost:4200', // -->Add this line
-                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
-                    'Access-Control-Allow-Headers': '*',
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
                     Authorization: 'Bearer ${currentUser.token}'
                 }
             });

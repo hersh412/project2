@@ -9,6 +9,7 @@ import { Users } from 'src/app/model/user.model';
 export class AuthenticationService {
   private loggedinUserSubject: BehaviorSubject<Users>;
   public loggedinUser: Observable<Users>;
+  response: any;
   
   constructor(private http: HttpClient) {
     this.loggedinUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('loggedinUser')));
@@ -20,20 +21,22 @@ export class AuthenticationService {
 
    login(email: string, password: string) {
     //return this.http.post<any>(`${config.apiUrl}/login`, { email, password }) <--use this!!! http://localhost:8080
-    return this.http.post<any>(`http://localhost:8080/login`, { email, password })  
+     
+     return this.http.post<any>(`http://localhost:8080/project2/login`, { email, password })
     .pipe(map(user => {
-
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+      if (user && user.token) {
+          console.log(user);
+          localStorage.setItem('loggedinUser', JSON.stringify(user));
+          console.log(user.token);
           this.loggedinUserSubject.next(user);
         }
-
+        console.log(user);
         return user;
      }));
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('loggedinUser');
     this.loggedinUserSubject.next(null);
   }
 }

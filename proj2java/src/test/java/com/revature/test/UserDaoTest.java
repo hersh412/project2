@@ -1,29 +1,18 @@
 package com.revature.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import org.junit.Before;
-import org.junit.Test;
+import com.revature.models.User;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.revature.models.User;
-import com.revature.daos.UserDaoImpl;
-import com.revature.utils.SessionFactoryUtil;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserDaoTest {
-	
-	@Mock
+
+    @Mock
     private Connection c;
     @Mock
     private Statement stmt;
@@ -31,7 +20,7 @@ public class UserDaoTest {
     private ResultSet rs;
     private User u;
 
-    
+
 //    @Before
 //    public void setUp() throws Exception {
 //        assertNotNull(c);
