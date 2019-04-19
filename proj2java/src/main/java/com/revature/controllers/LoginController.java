@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/login")
 public class LoginController {
 

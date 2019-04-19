@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PolicyService {
 
-    void addPolicy(Policy p);
+    int addPolicy(Policy p);
 
     void updatePolicy(Policy p);
 

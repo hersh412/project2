@@ -33,7 +33,8 @@ public class Policy {
     private Date endDate;
     private double deductible;
     private double premium;
-    @Column(name = "policy_owner")
+    @OneToOne
+    @JoinColumn(name = "policy_owner", referencedColumnName = "userid")
     private User owner;
 
     public Policy() {

@@ -1,27 +1,33 @@
 package com.revature.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.revature.daos.UserDao;
+import com.revature.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.daos.UserDao;
-import com.revature.daos.UserDaoImpl;
-import com.revature.models.User;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
-	UserDao userDao;
+
+	private UserDao userDao;
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 	
 	@Autowired
 	public void setUserdao(UserDao userDao) {
 		logger.info("setting userdao");
 		this.userDao = userDao;
+	}
+
+	@Override
+	public User getUserByUserId(int id) {
+		User ret = null;
+		logger.info("Getting user by id: " + id);
+		ret = userDao.getUser(id);
+		return ret;
 	}
 
 	@Override
