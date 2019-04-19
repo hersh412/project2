@@ -93,7 +93,7 @@ public class UserDaoImpl implements UserDao {
         log.info("Getting user with email: " + email);
         Session session = sf.openSession();
         Query q = session.createQuery("from User u where u.email = :p_email");
-        ret = (User) q.setString(1, email).uniqueResult();
+        ret = (User) q.setString("p_email", email).uniqueResult();
         session.close();
         return ret;
 //        Criteria c = session.createCriteria(User.class);

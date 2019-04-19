@@ -20,8 +20,8 @@ export class AuthenticationService {
    }
 
    login(email: string, password: string) {
-    //return this.http.post<any>(`${config.apiUrl}/login`, { email, password }) <--use this!!! http://localhost:8080
-     
+    // return this.http.post<any>(`${config.apiUrl}/login`, { email, password }) <--use this!!! http://localhost:8080
+
      return this.http.post<any>(`http://localhost:8080/project2/login`, { email, password })
     .pipe(map(user => {
       if (user && user.token) {
@@ -30,8 +30,8 @@ export class AuthenticationService {
           console.log(user.token);
           this.loggedinUserSubject.next(user);
         }
-        console.log(user);
-        return user;
+      console.log(user);
+      return user;
      }));
   }
 

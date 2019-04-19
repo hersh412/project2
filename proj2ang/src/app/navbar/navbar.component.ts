@@ -60,9 +60,10 @@ export class NavbarComponent implements OnInit {
             .subscribe(
                 data => {
                   this.loading = false;
+                  this.notLoggedin = false;
                   console.log("just before navigate");
                   //this.router.navigate(['/customerHome']);
-                  this.router.navigate(['/']);
+                  this.router.navigate(['/customer']);
                 },
                 error => {
                     this.alertService.error(error);
