@@ -45,8 +45,12 @@ export class SignupComponent {
                             this.sf.controls.address2.value , this.sf.controls.city.value , this.sf.controls.state.value ,
                             this.sf.controls.zipcode.value , this.sf.controls.gender.value === 'Male');
 
-   this.userService.addUser(u).subscribe(result => console.log(result));
-   this.authenticationService.login(this.sf.controls.email.value, this.sf.controls.password.value)
+   this.userService.addUser(u).subscribe(result => this.autoLogin());
+
+  }
+
+  autoLogin() {
+    this.authenticationService.login(this.sf.controls.email.value, this.sf.controls.password.value)
       .pipe(first())
       .subscribe(
         data => {
@@ -58,4 +62,5 @@ export class SignupComponent {
           this.alertService.error(error);
         });
   }
+
 }
