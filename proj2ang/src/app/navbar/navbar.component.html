@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <div *ngIf="notLoggedin" id ="login">
+  <div  id ="login">
     <div class="container">
       <div id="login-row" class="row justify-content-center align-items-center">
         <!--  
@@ -8,7 +8,7 @@
         </div>
         -->
         <div id="login-column" class="col-md-6">
-          <div id="login-box" class="col-md-12">
+          <div *ngIf="notLoggedin" id="login-box" class="col-md-12">
         <!--<p class="jumbotron-lg-only">Join our sepectacular insurance</p>-->
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="user-info">
               <h3 class="text-center text-info">Login</h3>

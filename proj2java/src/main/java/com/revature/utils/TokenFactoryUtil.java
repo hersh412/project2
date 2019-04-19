@@ -16,10 +16,11 @@ public class TokenFactoryUtil {
 	private static Logger log = Logger.getLogger("TokenFactoryUtil");
 	
 	public static String getToken(long userId) {
+		key = "AtM69";
 		Time = Math.abs(System.nanoTime());
 		nextL=Time;
 		while (nextL>100) {
-			log.log(Level.INFO, "nextL"+nextL);
+			log.log(Level.INFO, "nextL "+nextL);
 			nextCharInt = (int) (nextL%89 +32);
 			nextChar = Character.toString((char) nextCharInt);
 			nextL /= 100;

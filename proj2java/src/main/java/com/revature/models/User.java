@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="\"user\"")
@@ -28,7 +29,15 @@ public class User {
 	private String zip;
 	@Column(name="is_male")
 	private boolean isMale;
+	@Transient
+	private String token;
 	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String key) {
+		this.token = key;
+	}
 	public int getId() {
 		return id;
 	}
@@ -102,6 +111,14 @@ public class User {
 		this.isMale = isMale;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", userconf=" + userconf + ", fName="
+				+ fName + ", lName=" + lName + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
+				+ ", state=" + state + ", zip=" + zip + ", isMale=" + isMale + ", token=" + token + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -116,11 +133,11 @@ public class User {
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
 		result = prime * result + userconf;
 		result = prime * result + ((zip == null) ? 0 : zip.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -174,6 +191,11 @@ public class User {
 				return false;
 		} else if (!state.equals(other.state))
 			return false;
+		if (token == null) {
+			if (other.token != null)
+				return false;
+		} else if (!token.equals(other.token))
+			return false;
 		if (userconf != other.userconf)
 			return false;
 		if (zip == null) {
@@ -183,9 +205,11 @@ public class User {
 			return false;
 		return true;
 	}
-	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 	public User(int id, String email, String password, int userconf, String fName, String lName, String address1,
-			String address2, String city, String state, String zip, boolean isMale) {
+			String address2, String city, String state, String zip, boolean isMale, String token) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -199,20 +223,9 @@ public class User {
 		this.state = state;
 		this.zip = zip;
 		this.isMale = isMale;
+		this.token = token;
 	}
 	
-	
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", userconf=" + userconf + ", fName="
-				+ fName + ", lName=" + lName + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", isMale=" + isMale + "]";
-	}
-	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 

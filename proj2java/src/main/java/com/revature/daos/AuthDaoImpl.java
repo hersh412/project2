@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import com.revature.models.Auth;
-import com.revature.models.User;
 import com.revature.utils.SessionFactoryUtil;
 
 @Component

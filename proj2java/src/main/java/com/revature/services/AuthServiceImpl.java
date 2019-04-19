@@ -32,6 +32,7 @@ public class AuthServiceImpl {
 		in.setKey(TokenFactoryUtil.getToken(userId));
 		in.setAuthLevel(userConf);
 		authDao.createAuth(in);
+		log.log(Level.INFO, "auth persisted " + in.getKey());
 		return in;
 		
 	}
