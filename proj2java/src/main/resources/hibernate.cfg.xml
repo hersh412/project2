@@ -15,6 +15,7 @@
         <mapping class="com.revature.models.Policy"/>
         <mapping class="com.revature.models.User"/>
         <mapping class="com.revature.models.Auth"/>
+        <mapping class="com.revature.models.Quote"/>
 
     </session-factory>
 </hibernate-configuration>

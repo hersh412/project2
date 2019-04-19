@@ -2,7 +2,7 @@ package com.revature.controllers;
 
 import com.revature.models.Auth;
 import com.revature.models.User;
-import com.revature.services.AuthService;
+import com.revature.services.AuthServiceImpl;
 import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +14,12 @@ import java.util.List;
 public class UserController {
 
 	private UserService userService;
-	private AuthService authService;
+	private AuthServiceImpl authServiceImpl;
 
-	@GetMapping
-	public List<User> getAllUsers() {
-		return userService.getAllUsers();
+
+	public UserController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@GetMapping("/user/{email}")
@@ -32,14 +33,34 @@ public class UserController {
 		userService.addUser(user);
 	}
 
+	@GetMapping
+	public List<User> getAllUsers() {
+		return userService.getAllUsers();
+	}
+
+	/*
+	@PostMapping(value="/user/validate", consumes = "application/JSON")
+	public User validate(@RequestBody User user, Auth auth) {
+		User authUser = AuthServiceImpl.validateAuth(user);
+
+		if (authUser != null) {
+			sess.setAttribute("user", authUser);
+			return authUser;
+
+		}
+
+		return null;
+
+	}
+	*/
 	@Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
 	@Autowired
-	public void setAuthService(AuthService authService) {
-		this.authService = authService;
+	public void setAuthService(AuthServiceImpl authService) {
+		this.authServiceImpl = authServiceImpl;
 	}
 
 }
