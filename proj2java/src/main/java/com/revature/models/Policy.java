@@ -2,6 +2,7 @@ package com.revature.models;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "policy")
@@ -32,9 +33,49 @@ public class Policy {
     private Date endDate;
     private double deductible;
     private double premium;
+    @Column(name = "policy_owner")
+    private User owner;
 
     public Policy() {
         // TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public String toString() {
+        return "Policy{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", deductible=" + deductible +
+                ", premium=" + premium +
+                ", owner=" + owner +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Policy policy = (Policy) o;
+        return id == policy.id &&
+                Double.compare(policy.deductible, deductible) == 0 &&
+                Double.compare(policy.premium, premium) == 0 &&
+                Objects.equals(startDate, policy.startDate) &&
+                Objects.equals(endDate, policy.endDate) &&
+                Objects.equals(owner, policy.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, startDate, endDate, deductible, premium, owner);
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public int getId() {
@@ -75,52 +116,6 @@ public class Policy {
 
     public void setPremium(double premium) {
         this.premium = premium;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        long temp;
-        temp = Double.doubleToLongBits(deductible);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-        result = prime * result + id;
-        temp = Double.doubleToLongBits(premium);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Policy other = (Policy) obj;
-        if (Double.doubleToLongBits(deductible) != Double.doubleToLongBits(other.deductible))
-            return false;
-        if (endDate == null) {
-            if (other.endDate != null)
-                return false;
-        } else if (!endDate.equals(other.endDate))
-            return false;
-        if (id != other.id)
-            return false;
-        if (Double.doubleToLongBits(premium) != Double.doubleToLongBits(other.premium))
-            return false;
-        if (startDate == null) {
-            return other.startDate == null;
-        } else return startDate.equals(other.startDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Policy [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", deductible=" + deductible
-                + ", premium=" + premium + "]";
     }
 
 
